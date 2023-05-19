@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Занятие №2. Конвертор валют</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header class="d-flex justify-content-center py-3">
+            <h1>Занятие №2. Конвертор валют</h1>
+        </header>
+        <h2>Перевести</h2>
+        <div>
+            <form method="GET" action="./convert">
+                Из
+                <select name="fromSelect" id="fromSelect">
+                        {% for dev in currencies %}
+                            <option value="{{ dev }}">
+                                {{ dev }}
+                            </option>
+                        {% endfor %}
+                </select>
+                В
+                <select name="toSelect" id="toSelect">
+                {% for dev in currencies %}
+                    <option value="{{ dev }}">
+                      {{ dev }}
+                    </option>
+                {% endfor %}
+                </select>
+                <input type="submit" class="btn btn-success" value="Выбрать" align="right">
+            </form>
+        </div>
+    </body>
+</html>
