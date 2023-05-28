@@ -8,6 +8,8 @@ from currency_converter import CurrencyConverter, RateNotFoundError
 
 app = Flask(__name__, template_folder='templates')
 
+Hundred = 100.0
+
 
 @app.route('/forex')
 def view_forex():
@@ -16,10 +18,10 @@ def view_forex():
     today = date.today()
 
     try:
-        course = converter.convert(100.0, 'EUR', 'USD')
+        course = converter.convert(Hundred, 'EUR', 'USD')
 
-        txt = f'Сегодня {today} за 1 евро дают: {int(course / 100)} долларов ' \
-              f'{int(course % 100)} центов'
+        txt = f'Сегодня {today} за 1 евро дают: {int(course / Hundred)} долларов ' \
+              f'{int(course % Hundred)} центов'
     except RatesNotAvailableError as ex:
         print(f"not ready error: {ex}")
 
@@ -44,10 +46,10 @@ def view_currency():
     today = date.today()
 
     try:
-        course = converter.convert(100.0, 'EUR', 'USD')
+        course = converter.convert(Hundred, 'EUR', 'USD')
 
         txt = f'Сегодня {today} за 1 евро дают: ' \
-              f'{int(course / 100)} долларов {int(course % 100)} центов'
+              f'{int(course / Hundred)} долларов {int(course % Hundred)} центов'
 
     except RatesNotAvailableError as ex:
         print(f"not ready error: {ex}")
@@ -59,7 +61,6 @@ def view_currency():
 
 @app.route('/convert', methods=['POST', 'GET'])
 def view_convert():
-
     from_select = request.args.get('fromSelect', 'EUR')
     to_select = request.args.get('toSelect', 'USD')
 
