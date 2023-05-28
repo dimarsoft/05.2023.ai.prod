@@ -5,12 +5,12 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from lesson_3.src.models import download_models
+from models import download_models
 
-from lesson_3.src.pages.mnist import mnist_router
-from lesson_3.src.pages.router import router_pages
-from lesson_3.src.pages.segment import segment_router
-from lesson_3.src.pages.tseries import tseries_router
+from pages.mnist import mnist_router
+from pages.router import router_pages
+from pages.segment import segment_router
+from pages.tseries import tseries_router
 
 app = FastAPI(title="Занятие №3. Сервер")
 
