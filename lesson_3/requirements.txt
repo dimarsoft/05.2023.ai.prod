@@ -3,3 +3,4 @@ uvicorn
 python-multipart
 tensorflow
 gdown
+Pillow~=9.5.0
