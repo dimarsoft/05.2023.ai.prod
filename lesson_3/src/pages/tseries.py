@@ -1,5 +1,7 @@
 import base64
 import io
+from datetime import datetime, timedelta
+
 from fastapi import APIRouter
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
@@ -17,6 +19,9 @@ templates = Jinja2Templates(directory="templates")
 async def get_tseries_page(request: Request):
     # получаем данные за неделю по АПИ
     info = currency.get_week_history()
+
+    next_date = datetime.now().date() + timedelta(days=1)
+
     # строим график
     x = info["Date"]
     y = info["Currency"]
@@ -41,4 +46,5 @@ async def get_tseries_page(request: Request):
     return templates.TemplateResponse("tseries.html",
                                       {"request": request,
                                        "chart_image": chart_image_base64,
+                                       "next_date": next_date,
                                        "predict": predict_v})
