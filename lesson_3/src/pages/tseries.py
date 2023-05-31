@@ -6,8 +6,8 @@ from fastapi import Request
 from matplotlib import pyplot as plt
 
 
-from lesson_3.src.tools.currency import get_week_history
-from lesson_3.src.tools.predict_currency import currency_predict
+from ..tools.currency import get_week_history
+from ..tools.predict_currency import currency_predict
 
 tseries_router = APIRouter()
 
