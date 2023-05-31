@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 from pandas import DataFrame
 
-from lesson_3.src.settings import APILAYER_APY_KEY
+from settings import APILAYER_APY_KEY
 
 
 def get_week_history() -> DataFrame:

@@ -5,9 +5,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from matplotlib import pyplot as plt
 
-
-from ..tools.currency import get_week_history
-from ..tools.predict_currency import currency_predict
+from tools import currency
+from tools import predict_currency
 
 tseries_router = APIRouter()
 
@@ -17,7 +16,7 @@ templates = Jinja2Templates(directory="templates")
 @tseries_router.get("/tseries")
 async def get_tseries_page(request: Request):
     # получаем данные за неделю по АПИ
-    info = get_week_history()
+    info = currency.get_week_history()
     # строим график
     x = info["Date"]
     y = info["Currency"]
@@ -37,7 +36,7 @@ async def get_tseries_page(request: Request):
 
     # получаем предсказание
 
-    predict_v = currency_predict(y.values)
+    predict_v = predict_currency.currency_predict(y.values)
 
     return templates.TemplateResponse("tseries.html",
                                       {"request": request,
