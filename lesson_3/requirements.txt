@@ -6,3 +6,4 @@ gdown
 Pillow~=9.5.0
 python-dotenv
 matplotlib
+pandas
