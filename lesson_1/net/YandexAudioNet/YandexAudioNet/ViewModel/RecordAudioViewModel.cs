@@ -45,8 +45,7 @@ public class RecordAudioViewModel
     }
     public async Task<string> Synthesize(string text)
     {
-        //const string apyKey = "YCOO72iRl-05BettepCAZWptHq1iusTS9o4HvGn0"; // Укажите IAM-токен.
-        const string apyKey = "AQVN2ZUi8hE02NqLZnOR4zioczP7YKDwGxJdjsyM";
+        const string apyKey = "";
         //const string folderId = "<идентификатор каталога>"; // Укажите идентификатор каталога.
 
         HttpClient client = new ();
