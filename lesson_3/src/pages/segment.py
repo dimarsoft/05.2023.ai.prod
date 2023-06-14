@@ -28,7 +28,13 @@ async def segment_predict(image: UploadFile = File(...)):
     if model_segment is None:
         model_segment = load_model('static/segment.h5')
 
-    img_or = Image.open(image.file).resize((456, 256))
+    img = Image.open(image.file)
+    # файл может быть разного формата, а нужно 3 канала RGB
+    if img.mode != "RGB":
+        img = img.convert("RGB")
+
+    img_or = img.resize((456, 256))
+
     img = np.array(img_or)
     processed_image = np.expand_dims(img, axis=0)
     predict = np.argmax(model_segment.predict(processed_image), axis=-1)
